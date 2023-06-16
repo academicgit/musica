@@ -69,21 +69,21 @@ jobs:
 
       # Build and release if it's the main repository
       - name: Build and release on Mac
-        if: startsWith(matrix.os, 'macOS') && github.repository == 'th-ch/youtube-music'
+        if: startsWith(matrix.os, 'macOS') && github.repository == 'academicgit/musica'
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           yarn run release:mac
 
       - name: Build and release on Linux
-        if: startsWith(matrix.os, 'ubuntu') && github.repository == 'th-ch/youtube-music'
+        if: startsWith(matrix.os, 'ubuntu') && github.repository == 'academicgit/musica'
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           yarn run release:linux
 
       - name: Build and release on Windows
-        if: startsWith(matrix.os, 'windows') && github.repository == 'th-ch/youtube-music'
+        if: startsWith(matrix.os, 'windows') && github.repository == 'academicgit/musica'
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
@@ -91,24 +91,24 @@ jobs:
 
       # Only build without release if it is a fork
       - name: Build on Mac
-        if: startsWith(matrix.os, 'macOS') && github.repository != 'th-ch/youtube-music'
+        if: startsWith(matrix.os, 'macOS') && github.repository != 'academicgit/musica'
         run: |
           yarn run build:mac
 
       - name: Build on Linux
-        if: startsWith(matrix.os, 'ubuntu') && github.repository != 'th-ch/youtube-music'
+        if: startsWith(matrix.os, 'ubuntu') && github.repository != 'academicgit/musica'
         run: |
           yarn run build:linux
 
       - name: Build on Windows
-        if: startsWith(matrix.os, 'windows') && github.repository != 'th-ch/youtube-music'
+        if: startsWith(matrix.os, 'windows') && github.repository != 'academicgit/musica'
         run: |
           yarn run build:win
 
   release:
     runs-on: ubuntu-latest
     name: Release YouTube Music
-    if: github.repository == 'th-ch/youtube-music' && github.ref == 'refs/heads/master'
+    if: github.repository == 'academicgit/musica' && github.ref == 'refs/heads/master'
     needs: build
     steps:
       - uses: actions/checkout@v3
@@ -187,7 +187,7 @@ jobs:
           name: ${{ env.VERSION_TAG }}
           replacebody: true
           body: |
-            See [changelog](https://github.com/th-ch/youtube-music/blob/master/changelog.md#${{ env.CHANGELOG_ANCHOR }}) for the list of updates and the full diff.
+            See [changelog](https://github.com/academicgit/musica/blob/master/changelog.md#${{ env.CHANGELOG_ANCHOR }}) for the list of updates and the full diff.
 
             Thanks to all contributors! 🏅
 
