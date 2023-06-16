@@ -7,6 +7,7 @@ on:
 
 env:
   NODE_VERSION: "16.x"
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   build:
